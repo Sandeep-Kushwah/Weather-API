@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://techstory.in/wp-content/uploads/2023/01/pexels-sk-1049831-scaled.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.weather-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0c75d0;
+}
+
+.weather-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.temp-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.temp-info h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.temp-info p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.forecast-box {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  min-width: 250px;
+  margin-top: 1rem;
+}
+
+.forecast-box h3 {
+  margin-bottom: 1rem;
+}
+
+#forecast p {
+  margin: 5px 0;
+}
