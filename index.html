@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="weather-container">
+    <input type="text" id="cityInput" placeholder="Search city..." />
+    <button onclick="getWeather()">Search</button>
+
+    <div class="weather-main">
+      <div class="temp-info">
+        <h1 id="temp">--°C</h1>
+        <p id="city">City Name</p>
+        <p id="summary">--</p>
+        <p id="extra">H: --° | L: --°</p>
+      </div>
+
+      <div class="forecast-box">
+        <h3>Condition</h3>
+        <div id="forecast">Enter a city to see forecast.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById("cityInput").value.trim();
+      if (!city) return;
+
+      try {
+        const response = await fetch(`https://wttr.in/${city}?format=j1`);
+        const data = await response.json();
+
+        const current = data.current_condition[0];
+        const area = data.nearest_area[0].areaName[0].value;
+        const tempC = current.temp_C;
+        const weatherDesc = current.weatherDesc[0].value;
+        const humidity = current.humidity;
+        const wind = current.windspeedKmph;
+        const maxTemp = data.weather[0].maxtempC;
+        const minTemp = data.weather[0].mintempC;
+
+        document.getElementById("temp").textContent = `${tempC}°C`;
+        document.getElementById("city").textContent = area;
+        document.getElementById("summary").textContent = weatherDesc;
+        document.getElementById("extra").textContent = `H: ${maxTemp}° | L: ${minTemp}°`;
+
+        document.getElementById("forecast").innerHTML = `
+          <p><strong>Humidity:</strong> ${humidity}%</p>
+          <p><strong>Wind:</strong> ${wind} km/h</p>
+        `;
+      } catch (err) {
+        document.getElementById("forecast").innerHTML = `<p>⚠️ Could not fetch weather. Try again.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
